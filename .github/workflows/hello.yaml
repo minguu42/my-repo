@@ -5,10 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, world"
-      - uses: actions/checkout@v4
-  hello-error:
-    runs-on: ubuntu-latest
-    steps:
       - run: |
-          echo "error occurred"
-          exit 1
+          echo "${{ github.run_id}}"
+          echo "${{ github.head_ref }}"
+          echo "${{ github.workspace }}"
+          echo "${{ github.repository }}"
+          echo "${{ github.repository_owner }}"
+          echo "${{ github.event }}"
+          echo "${{ github.actor }}"
+      - run: exit 1
+      - run: echo "Don't Print"
+      - run: echo "いけるか!?"
+        if: ${{ failure() }}
