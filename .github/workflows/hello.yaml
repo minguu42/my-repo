@@ -6,3 +6,9 @@ jobs:
     steps:
       - run: echo "Hello, world"
       - uses: actions/checkout@v4
+  hello-error:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "error occurred"
+          exit 1
